@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Image Upload</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        function previewImage(event) {
+            var reader = new FileReader();
+            reader.onload = function() {
+                var output = document.getElementById('image-preview');
+                output.src = reader.result;
+            };
+            reader.readAsDataURL(event.target.files[0]);
+        }
+    </script>
+</head>
+<body>
+<h1>Image Upload</h1>
+<form action="/upload" method="post" enctype="multipart/form-data">
+    <input type="file" name="image" onchange="previewImage(event)">
+    <br>
+    <img id="image-preview" src="" alt="Preview Image" style="max-width: 300px; max-height: 300px;">
+    <br>
+    <input type="submit" value="Upload">
+</form>
+</body>
+</html>

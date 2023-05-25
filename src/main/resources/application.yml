@@ -1,0 +1,26 @@
+spring:
+  security:
+    oauth2:
+      client:
+        provider:
+          azure-ad:
+            authorization-uri: https://login.microsoftonline.com/e8fda047-42bd-436f-a410-64918b7d1697/oauth2/v2.0/authorize
+            token-uri: https://login.microsoftonline.com/e8fda047-42bd-436f-a410-64918b7d1697/oauth2/v2.0/token
+            user-info-uri: https://graph.microsoft.com/oidc/userinfo
+            jwk-set-uri: https://login.microsoftonline.com/e8fda047-42bd-436f-a410-64918b7d1697/discovery/v2.0/keys
+            user-name-attribute: name
+        registration:
+          azure-client:
+            provider: azure-ad
+            client-id: 18c1096a-068a-408b-bfd0-70b84e46cd56
+            client-secret: U4D8Q~aPvlZrpUKKXqXLvgqhxlbx78JgVkrT4asl
+            redirect-uri: http://localhost:8080/login/oauth2/code/
+            authorization-grant-type: authorization_code
+            scope: openid, https://graph.microsoft.com/User.Read
+  # Thymeleaf configuration
+  thymeleaf:
+    prefix: classpath:/templates/
+    suffix: .html
+    cache: false
+    mode: HTML
+
